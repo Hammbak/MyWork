@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config>
+  <connections>
+    <connection purpose="dev">
+      <descriptiopn>desc</descriptiopn>
+      <connectionString>constring</connectionString>
+    </connection>
+  </connections>
+</config>
