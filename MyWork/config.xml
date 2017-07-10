@@ -5,5 +5,9 @@
       <descriptiopn>desc</descriptiopn>
       <connectionString>constring</connectionString>
     </connection>
+    <connection purpose="dev">
+      <descriptiopn>desc</descriptiopn>
+      <connectionString>constring</connectionString>
+    </connection>
   </connections>
 </config>
