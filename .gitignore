@@ -6,7 +6,6 @@
 *.user
 *.userosscache
 *.sln.docstates
-MyWork/config.xml
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
@@ -472,3 +471,4 @@ _Pvt_Extensions
 # FAKE - F# Make
 .fake/
 *.tss
+/MyWork/config.xml
