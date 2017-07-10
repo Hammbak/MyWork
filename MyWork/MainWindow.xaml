@@ -32,7 +32,7 @@
                     <GridViewColumn Header="목적" Width="50" DisplayMemberBinding="{Binding Path=Purpose}" />
                     <GridViewColumn Header="설명" Width="100" DisplayMemberBinding="{Binding Path=Description}" />
                     <GridViewColumn Header="접속" Width="100" DisplayMemberBinding="{Binding Path=ConnectionString}"/>
-                    <GridViewColumn Header="상태" Width="500" DisplayMemberBinding="{Binding Path=Status}"/>
+                    <GridViewColumn Header="상태" Width="200" DisplayMemberBinding="{Binding Path=Status}"/>
                 </GridView>
             </ListView.View>
         </ListView>
