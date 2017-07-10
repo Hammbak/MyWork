@@ -10,4 +10,9 @@
       <connectionString>constring</connectionString>
     </connection>
   </connections>
+<connection purpose="dev">
+      <descriptiopn>desc</descriptiopn>
+      <connectionString>constring</connectionString>
+    </connection>
+  </connections>
 </config>
