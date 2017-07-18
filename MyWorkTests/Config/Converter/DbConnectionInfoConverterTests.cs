@@ -2,6 +2,7 @@
 using MyWork.Model;
 using NUnit.Framework;
 using System.Xml.Linq;
+using System.Linq;
 
 namespace MyWork.Config.Converter.Tests
 {
@@ -24,13 +25,99 @@ namespace MyWork.Config.Converter.Tests
             var ele = new XElement("connection",
                 new XAttribute("purpose", "dev"),
                 new XElement("description", "descriptionValue"),
-                new XElement("connectionString", "connectionStringValue")
+                new XElement("connectionIp", "ipValue"),
+                new XElement("connectionId", "idValue"),
+                new XElement("connectionDatabases", 
+                    new XElement("connectionDatabase", "databaseValue1"),
+                    new XElement("connectionDatabase", "databaseValue2")
+                ),
+                new XElement("connectionPassword", "passwordValue")
             );
-            var result = DbConnectionInfoConverter.Convert(ele);
-            Assert.AreEqual("connectionStringValue", result.ConnectionString);
-            Assert.AreEqual("descriptionValue", result.Description);
-            Assert.AreEqual(DataBasePurpose.Dev, result.Purpose);
+
+            var result = DbConnectionInfoConverter.Convert(ele).ToList();
+            Assert.AreEqual(2, result.Count());
+            Assert.AreEqual("ipValue", result[0].ConnectionIp);
+            Assert.AreEqual("idValue", result[0].ConnectionId);
+            Assert.AreEqual("passwordValue", result[0].ConnectionPassword);
+            Assert.AreEqual("descriptionValue", result[0].Description);
+            Assert.AreEqual("databaseValue1", result[0].ConnectionDatabase);
+            Assert.AreEqual("databaseValue2", result[1].ConnectionDatabase);
+            Assert.AreEqual(DataBasePurpose.Dev, result[0].Purpose);
         }
+
+        [Test()]
+        public void ConvertTest_아이디없음()
+        {
+            var ele = new XElement("connection",
+                new XAttribute("purpose", "dev"),
+                new XElement("description", "descriptionValue"),
+                new XElement("connectionIp", "ipValue"),
+                new XElement("connectionId", ""),
+                new XElement("connectionDatabases",
+                    new XElement("connectionDatabase", "databaseValue1"),
+                    new XElement("connectionDatabase", "databaseValue2")
+                ),
+                new XElement("connectionPassword", "passwordValue")
+            );
+
+            Assert.Throws<ConfigException>(() => { DbConnectionInfoConverter.Convert(ele); });
+        }
+
+        [Test()]
+        public void ConvertTest_아이피없음()
+        {
+            var ele = new XElement("connection",
+                new XAttribute("purpose", "dev"),
+                new XElement("description", "descriptionValue"),
+                new XElement("connectionIp", ""),
+                new XElement("connectionId", "idValue"),
+                new XElement("connectionDatabases",
+                    new XElement("connectionDatabase", "databaseValue1"),
+                    new XElement("connectionDatabase", "databaseValue2")
+                ),
+                new XElement("connectionPassword", "passwordValue")
+            );
+
+            Assert.Throws<ConfigException>(() => { DbConnectionInfoConverter.Convert(ele); });
+
+        }
+
+        [Test()]
+        public void ConvertTest패스워드없음()
+        {
+            var ele = new XElement("connection",
+                new XAttribute("purpose", "dev"),
+                new XElement("description", "descriptionValue"),
+                new XElement("connectionIp", "ipValue"),
+                new XElement("connectionId", "idValue"),
+                new XElement("connectionDatabases",
+                    new XElement("connectionDatabase", "databaseValue1"),
+                    new XElement("connectionDatabase", "databaseValue2")
+                ),
+                new XElement("connectionPassword", "")
+            );
+
+            Assert.Throws<ConfigException>(() => { DbConnectionInfoConverter.Convert(ele); });
+        }
+
+        [Test()]
+        public void ConvertTest데이터베이스없음()
+        {
+            var ele = new XElement("connection",
+                new XAttribute("purpose", "dev"),
+                new XElement("description", "descriptionValue"),
+                new XElement("connectionIp", "ipValue"),
+                new XElement("connectionId", "idValue"),
+                new XElement("connectionDatabases",
+                    new XElement("connectionDatabase", "databaseValue1"),
+                    new XElement("connectionDatabase", "databaseValue2")
+                ),
+                new XElement("connectionPassword", "")
+            );
+
+            Assert.Throws<ConfigException>(() => { DbConnectionInfoConverter.Convert(ele); });
+        }
+
 
         [Test()]
         public void ConvertTest_description_없음()
@@ -38,24 +125,24 @@ namespace MyWork.Config.Converter.Tests
             var ele = new XElement("connection",
                 new XAttribute("purpose", "dev"),
                 new XElement("description", ""),
-                new XElement("connectionString", "connectionStringValue")
-            );
-            var result = DbConnectionInfoConverter.Convert(ele);
-            Assert.AreEqual("connectionStringValue", result.ConnectionString);
-            Assert.AreEqual("connectionStringValue", result.Description);
-            Assert.AreEqual(DataBasePurpose.Dev, result.Purpose);
-        }
-
-        [Test()]
-        public void ConvertTest_예외()
-        {
-            var ele = new XElement("connection",
-                new XAttribute("purpose", "dev"),
-                new XElement("description", "descriptionValue"),
-                new XElement("connectionString", "")
+                new XElement("connectionIp", "ipValue"),
+                new XElement("connectionId", "idValue"),
+                new XElement("connectionDatabases",
+                    new XElement("connectionDatabase", "databaseValue1"),
+                    new XElement("connectionDatabase", "databaseValue2")
+                ),
+                new XElement("connectionPassword", "passwordValue")
             );
 
-            Assert.Throws<ConfigException>(() => { DbConnectionInfoConverter.Convert(ele); });
+            var result = DbConnectionInfoConverter.Convert(ele).ToList();
+            Assert.AreEqual(2, result.Count());
+            Assert.AreEqual("ipValue", result[0].ConnectionIp);
+            Assert.AreEqual("idValue", result[0].ConnectionId);
+            Assert.AreEqual("passwordValue", result[0].ConnectionPassword);
+            Assert.AreEqual("ipValue", result[0].Description);
+            Assert.AreEqual("databaseValue1", result[0].ConnectionDatabase);
+            Assert.AreEqual("databaseValue2", result[1].ConnectionDatabase);
+            Assert.AreEqual(DataBasePurpose.Dev, result[0].Purpose);
         }
 
         [Test]

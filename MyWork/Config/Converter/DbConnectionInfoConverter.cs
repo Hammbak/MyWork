@@ -1,31 +1,44 @@
 ﻿using MyWork.Exceptions;
 using MyWork.Model;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Linq;
 
 namespace MyWork.Config.Converter
 {
     public interface IDbConnectionInfoConverter
     {
-        DbConnectionInfoItem Convert(XElement ele);
+        IEnumerable<DbConnectionInfoItem> Convert(XElement ele);
     }
     public class DbConnectionInfoConverter : IDbConnectionInfoConverter
     {
-        public DbConnectionInfoItem Convert(XElement ele)
+        public IEnumerable<DbConnectionInfoItem> Convert(XElement ele)
         {
             var description = ele.Element("description")?.Value;
-            var connectionString = ele.Element("connectionString")?.Value;
             var stringPurpose = ele.Attribute("purpose")?.Value;
+            var connectionIp = ele.Element("connectionIp")?.Value;
+            var connectionId = ele.Element("connectionId")?.Value;
+            var connectionPassword = ele.Element("connectionPassword")?.Value;
+            var connectionDatabases = ele.Element("connectionDatabases")?.Elements("connectionDatabase");
 
-            if (string.IsNullOrEmpty(connectionString)) throw new ConfigException();
-            if (string.IsNullOrEmpty(description)) description = connectionString;
+            if (string.IsNullOrEmpty(connectionIp)) throw new ConfigException();
+            if (string.IsNullOrEmpty(connectionId)) throw new ConfigException();
+            if (string.IsNullOrEmpty(connectionPassword)) throw new ConfigException();
+            if (connectionDatabases == null) throw new ConfigException();
+            if (string.IsNullOrEmpty(description)) description = connectionIp;
 
-            return new DbConnectionInfoItem
-            {
-                Description = description,
-                ConnectionString = connectionString,
-                Purpose = GetPurpose(stringPurpose)
-            };
+
+            return connectionDatabases.Select(databaseEle => databaseEle.Value).Select(database => 
+                new DbConnectionInfoItem{
+                    Description = description,
+                    ConnectionIp = connectionIp,
+                    ConnectionDatabase = database??"master",
+                    ConnectionId = connectionId,
+                    ConnectionPassword = connectionPassword,
+                    Purpose = GetPurpose(stringPurpose)
+                }
+            );
         }
 
         private DataBasePurpose GetPurpose(string value)

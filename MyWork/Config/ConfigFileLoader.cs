@@ -24,7 +24,7 @@ namespace MyWork.Config
 
         private IEnumerable<DbConnectionInfoItem> Parse(XDocument xDoc)
         {
-            return xDoc.Element("config").Element("connections").Elements("connection").Select(t => DbConnectionInfoConverter.Convert(t)).ToList();
+            return xDoc.Element("config").Element("connections").Elements("connection").SelectMany(t => DbConnectionInfoConverter.Convert(t)).ToList();
         }
     }
 }

@@ -94,9 +94,11 @@
     </Compile>
     <Compile Include="Config\ConfigFileLoader.cs" />
     <Compile Include="Config\Converter\DbConnectionInfoConverter.cs" />
+    <Compile Include="DbExecuter\Connection\ConnectionStringMaker.cs" />
     <Compile Include="DbExecuter\Dao\CODCreator.cs" />
     <Compile Include="Exceptions\ConfigException.cs" />
     <Compile Include="Model\DataBasePurpose.cs" />
+    <Compile Include="Model\DatabaseSelectedItem.cs" />
     <Compile Include="Model\DbConnectionInfoItem.cs" />
     <Compile Include="DbExecuter\DbExecuter.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -137,6 +139,7 @@
   <ItemGroup>
     <EmbeddedResource Include="config.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
