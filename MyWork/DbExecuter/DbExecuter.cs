@@ -14,6 +14,7 @@ namespace MyWork.DbExecuter
     public interface IDbExecuter
     {
         void Execute(IEnumerable<DbConnectionInfoItem> connectionInfoList, string query);
+        void Find(IEnumerable<DbConnectionInfoItem> connectionInfoList, string objectName);
     }
     public class DbExecuter : IDbExecuter
     {
@@ -23,6 +24,16 @@ namespace MyWork.DbExecuter
         public void Execute(IEnumerable<DbConnectionInfoItem> connectionInfoList, string query)
         {
             connectionInfoList.ForEach(t => Execute(t, query));
+        }
+
+        public void Find(IEnumerable<DbConnectionInfoItem> connectionInfoList, string objectName)
+        {
+            string query = $@"
+                SELECT type COLLATE Latin1_General_CI_AS_KS_WS AS [type] FROM dbo.sysobjects WHERE id = OBJECT_ID(N'{objectName}')
+                UNION ALL
+                SELECT type_desc COLLATE Latin1_General_CI_AS_KS_WS AS [type] FROM sys.indexes WHERE name = '{objectName}'
+            ";
+            Execute(connectionInfoList, query);
         }
 
         private void Execute(DbConnectionInfoItem connectionInfo, string query)

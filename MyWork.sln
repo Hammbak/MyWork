@@ -9,18 +9,33 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWorkTests", "MyWorkTests\
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		CD_ROM|Any CPU = CD_ROM|Any CPU
 		Debug|Any CPU = Debug|Any CPU
+		DVD-5|Any CPU = DVD-5|Any CPU
 		Release|Any CPU = Release|Any CPU
+		SingleImage|Any CPU = SingleImage|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D7FF6D3D-8734-4D08-ACE4-68557233AF9C}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
+		{D7FF6D3D-8734-4D08-ACE4-68557233AF9C}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
 		{D7FF6D3D-8734-4D08-ACE4-68557233AF9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D7FF6D3D-8734-4D08-ACE4-68557233AF9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7FF6D3D-8734-4D08-ACE4-68557233AF9C}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7FF6D3D-8734-4D08-ACE4-68557233AF9C}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
 		{D7FF6D3D-8734-4D08-ACE4-68557233AF9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D7FF6D3D-8734-4D08-ACE4-68557233AF9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7FF6D3D-8734-4D08-ACE4-68557233AF9C}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
+		{D7FF6D3D-8734-4D08-ACE4-68557233AF9C}.SingleImage|Any CPU.Build.0 = Release|Any CPU
+		{1125276F-3D7E-4FAE-8DA1-BA02032FCA8C}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
+		{1125276F-3D7E-4FAE-8DA1-BA02032FCA8C}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
 		{1125276F-3D7E-4FAE-8DA1-BA02032FCA8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1125276F-3D7E-4FAE-8DA1-BA02032FCA8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1125276F-3D7E-4FAE-8DA1-BA02032FCA8C}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
+		{1125276F-3D7E-4FAE-8DA1-BA02032FCA8C}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
 		{1125276F-3D7E-4FAE-8DA1-BA02032FCA8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1125276F-3D7E-4FAE-8DA1-BA02032FCA8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1125276F-3D7E-4FAE-8DA1-BA02032FCA8C}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
+		{1125276F-3D7E-4FAE-8DA1-BA02032FCA8C}.SingleImage|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

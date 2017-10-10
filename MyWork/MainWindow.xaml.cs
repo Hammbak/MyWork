@@ -67,7 +67,7 @@ namespace MyWork
         }
         public IEnumerable<CheckboxSelectItem> GetDescriptionSelectedList()
         {
-            string[] descriptionList = { "일본향", "싱가폴향", "한국향" };
+            string[] descriptionList = { "일본향", "싱가폴향", "한국향", "인도향" };
             return descriptionList.Select(t => new CheckboxSelectItem { Name = t, Checked = true }).ToList();
         }
 
@@ -87,6 +87,14 @@ namespace MyWork
             string query = new TextRange(queryText.Document.ContentStart, queryText.Document.ContentEnd).Text;
  
             DbExecuter.Execute(selectedList, query);
+        }
+
+        public void Find()
+        {
+            var selectedList = DbConnectionInfoList.Where(t => t.Checked);
+            string name = new TextRange(queryText.Document.ContentStart, queryText.Document.ContentEnd).Text.Replace("\r\n","").Replace("\n","").Trim();
+
+            DbExecuter.Find(selectedList, name);
         }
 
         private void ViewRefresh()
@@ -163,6 +171,14 @@ namespace MyWork
 
         private void FilterCheckChange(object sender, RoutedEventArgs e)
         {
+            ViewRefresh();
+        }
+
+        private void find_button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageReset();
+            ViewRefresh();
+            Find();
             ViewRefresh();
         }
     }

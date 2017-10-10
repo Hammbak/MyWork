@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config>
+  <connections>
+    <connection purpose="operation"> <!--operation, test, dev-->
+      <description>운영 - 일본향</description>
+      <connectionIp></connectionIp>
+      <connectionId></connectionId>
+      <connectionPassword><![CDATA[pass]]></connectionPassword>
+      <connectionDatabases>
+        <connectionDatabase>master</connectionDatabase>
+        <connectionDatabase>master2</connectionDatabase>
+      </connectionDatabases>
+    </connection>
+  </connections>
+</config>

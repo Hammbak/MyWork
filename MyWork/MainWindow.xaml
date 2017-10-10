@@ -89,6 +89,7 @@
                     </GridView>
                 </ListView.View>
             </ListView>
+            <Button x:Name="find_button" Content="Find" VerticalAlignment="Top" Height="53" Margin="582,81,0,0" Click="find_button_Click"/>
 
 
         </Grid>
