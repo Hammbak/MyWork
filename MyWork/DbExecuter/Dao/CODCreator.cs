@@ -19,7 +19,7 @@ namespace MyWork.DbExecuter.Dao
         public ICommonObjectDao GetCOD(string connectionString)
         {
             return new CommonObjectDao
-            {
+            {       
                 AdoTemplate = GetAdoTemplate(connectionString)
             };
         }

@@ -7,6 +7,6 @@ using System.Threading.Tasks;
 namespace MyWork.Exceptions
 {
     public class ConfigException : Exception        
-    {
+    {     
     }
 }

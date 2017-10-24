@@ -11,7 +11,7 @@
             <ColumnDefinition Width="500*" MinWidth="300"/>
             <ColumnDefinition Width="500*" MinWidth="300"/>
         </Grid.ColumnDefinitions>
-        <RichTextBox x:Name="queryText" Margin="10">
+        <RichTextBox x:Name="queryText" Margin="10" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
             <FlowDocument>
                 <Paragraph FontFamily="Consolas">
                     <Run Text="query"/>
