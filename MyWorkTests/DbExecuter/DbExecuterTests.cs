@@ -17,7 +17,9 @@ namespace MyWork.DbExecuter.Tests
     [TestFixture()]
     public class DbExecuterTests
     {
+        
         DbExecuter DbExecuter;
+        
         Mock<ICODCreator> MockCODCreator;
         Mock<IConnectionStringMaker> MockConnectionStringMaker;
 
