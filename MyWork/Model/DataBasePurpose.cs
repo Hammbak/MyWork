@@ -9,7 +9,9 @@ namespace MyWork.Model
     public enum DataBasePurpose
     {
         Operation,
+        
         Test,
+        
         Dev
     }
 }
