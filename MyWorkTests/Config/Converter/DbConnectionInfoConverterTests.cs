@@ -15,7 +15,7 @@ namespace MyWork.Config.Converter.Tests
         [SetUp]
         public void Setup()
         {
-            DbConnectionInfoConverter = new DbConnectionInfoConverter();
+            DbConnectionInfoConverter = new DbConnectionInfoConverter(); 
             pObj = new Microsoft.VisualStudio.TestTools.UnitTesting.PrivateObject(DbConnectionInfoConverter);
         }
 
