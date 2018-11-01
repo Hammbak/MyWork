@@ -8,7 +8,7 @@
       <connectionPassword><![CDATA[pass]]></connectionPassword>
       <connectionDatabases>
         <connectionDatabase>33</connectionDatabase>
-        <connectionDatabase>44</connectionDatabase>
+        <connectionDatabase>445</connectionDatabase>
       </connectionDatabases>
     </connection>
   </connections>
