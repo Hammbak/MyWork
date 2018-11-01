@@ -7,8 +7,8 @@
       <connectionId></connectionId>
       <connectionPassword><![CDATA[pass]]></connectionPassword>
       <connectionDatabases>
-        <connectionDatabase>master</connectionDatabase>
-        <connectionDatabase>master2</connectionDatabase>
+        <connectionDatabase>11</connectionDatabase>
+        <connectionDatabase>22</connectionDatabase>
       </connectionDatabases>
     </connection>
   </connections>
