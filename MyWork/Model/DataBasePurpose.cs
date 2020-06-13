@@ -10,7 +10,9 @@ namespace MyWork.Model
     {
     
         Operation,
+        
         Test,
+        
         Dev
     }
 }
